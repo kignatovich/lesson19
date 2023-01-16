@@ -1,0 +1,23 @@
+---
+- name: Adding new user and setup git, sudo, mc, htop
+  hosts: all
+  tasks:
+    - name: Install git, sudo, mc, htop
+      apt:
+        name: git, sudo, mc, htop
+        state: latest
+
+
+  pre_tasks:
+        - name: Add group 'docker'
+          ansible.builtin.group:
+            name: docker
+            state: present
+
+        - name: Add user and ad user to groups
+          user:
+            name: testuser
+            groups: sudo,docker
+            create_home: yes
+            append: yes
+            password: "{{ '123456789' | password_hash('sha512') }}"

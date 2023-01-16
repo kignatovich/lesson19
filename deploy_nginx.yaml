@@ -4,7 +4,7 @@
   become: true
   vars:
     http_port: 80
-    server_name: "node_nginx"
+    server_name: "vhost_nginx"
     nginx_path: /etc/nginx
     nginx_sites: {{ nginx_path }}/config.d
 

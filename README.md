@@ -61,7 +61,7 @@ Downloading https://galaxy.ansible.com/download/community-docker-3.4.0.tar.gz to
 Installing 'community.docker:3.4.0' to '/home/front/.ansible/collections/ansible_collections/community/docker'
 community.docker:3.4.0 was installed successfully
 ```
-- На данный момнет конечно не особо понятно, что делать с данной комнадой, есть ссылка на [оф репозиторий](https://github.com/ansible-collections/community.docker) данного модуля, где описаны команды.
+- На данный момнет конечно не особо понятно, что делать с данной комнадой, есть ссылка на [оф репозиторий](https://github.com/ansible-collections/community.docker) данного модуля, где описаны модули и плагины.
 Но я нашел более простой способ устновки docker, который описан в "Список источников:03".
 </p>
 </details>

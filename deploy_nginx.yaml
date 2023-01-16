@@ -33,6 +33,7 @@
         src=./template/nginx.conf.tpl
         dest={{ nginx_path }}/nginx.conf
       notify: restart nginx
+  
   handlers:
     - name: restart nginx
       service:

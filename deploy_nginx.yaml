@@ -20,7 +20,8 @@
         dest={{ nginx_sites }}/tms.local.conf
 
     - name: Get uptime and avg
-      shell: uptime
+      shell: 
+        cmd: uptime
       register: upa
 
     - name: latest index.html file is present

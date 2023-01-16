@@ -1,0 +1,17 @@
+---
+- name: install and start webserver
+  hosts: web_servers
+  vars:
+    http_port: 80
+    server_name: "node1"
+
+  tasks:
+    - name: nginx install
+      apt:
+        name: nginx
+        state: latest
+
+    - name: latest index.html file is present
+      template:
+        src: ../files/index.html.tpl
+        dest: /var/www/html/index.html

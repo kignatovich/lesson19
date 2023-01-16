@@ -1,6 +1,7 @@
 ---
 - name: Adding new user and setup git, sudo, mc, htop
-  hosts: all
+  hosts: nginxserver
+  become: yes
   tasks:
     - name: Install git, sudo, mc, htop
       apt:
@@ -9,10 +10,11 @@
 
 
   pre_tasks:
-        - name: Add group 'docker'
+        - name: Ensure group "docker" exists with correct gid
           ansible.builtin.group:
             name: docker
             state: present
+            gid: 1750
 
         - name: Add user and ad user to groups
           user:

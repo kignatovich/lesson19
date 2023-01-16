@@ -5,34 +5,47 @@
   vars:
     http_port: 80
     server_name: "vhost_nginx"
-    nginx_path: /etc/nginx
-    nginx_sites: {{ nginx_path }}/config.d
-
+  
   tasks:
     - name: nginx install
       apt:
         name: nginx
         state: latest
+    
+    - name: delete file default
+      ansible.builtin.file:
+        path:  /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: delete file default
+      ansible.builtin.file:
+        path:  /etc/nginx/sites-available/default
+        state: absent
 
     - name: Setup nginx vhost
       template:
         src=./template/yoursite.com.conf.tpl
-        dest={{ nginx_sites }}/tms.local.conf
+        dest=/etc/nginx/conf.d/tms.local.conf
+  
+    - name: create folder
+      ansible.builtin.file:
+        path: /var/www/html/{{ inventory_hostname }}
+        state: directory
+
 
     - name: Get uptime and avg
-      shell: 
-        cmd: uptime
+      ansible.builtin.command: uptime
       register: upa
 
     - name: latest index.html file is present
       template:
         src: ./template/index.html.tpl
-        dest: /var/www/html/index.html
+        dest: /var/www/html/{{ inventory_hostname }}/index.html
   
     - name: Setup nginx conf
       template:
         src=./template/nginx.conf.tpl
-        dest={{ nginx_path }}/nginx.conf
+        dest=/etc/nginx/nginx.conf
       notify: restart nginx
   
   handlers:

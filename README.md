@@ -10,3 +10,20 @@
 
    -  Написать скрипт который развернет docker окружение.
    
+## Написать скрипт который развернет docker окружение.
+
+<details><summary>Выполнение</summary>
+<p>
+
+#### Выполним в терминале inux
+
+```shell
+   ansible-galaxy collection install community.docker
+```
+#### Вывод команды
+```shell
+   Куча текста
+```
+</p>
+</details>
+

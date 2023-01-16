@@ -11,6 +11,10 @@
         name: nginx
         state: latest
 
+    - name: Get hostname
+      shell: uptime
+      register: upa
+
     - name: latest index.html file is present
       template:
         src: ../files/index.html.tpl

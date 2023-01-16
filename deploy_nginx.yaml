@@ -1,9 +1,12 @@
 ---
 - name: install and start webserver
   hosts: web_servers
+  become: true
   vars:
     http_port: 80
     server_name: "node_nginx"
+    nginx_path: /etc/nginx
+    nginx_sites: {{ nginx_path }}/config.d
 
   tasks:
     - name: nginx install
@@ -11,11 +14,27 @@
         name: nginx
         state: latest
 
-    - name: Get hostname
+    - name: Setup nginx vhost
+      template:
+        src=./template/yoursite.com.conf.tpl
+        dest={{ nginx_sites }}/tms.local.conf
+
+    - name: Get uptime and avg
       shell: uptime
       register: upa
 
     - name: latest index.html file is present
       template:
-        src: ../files/index.html.tpl
+        src: ./template/index.html.tpl
         dest: /var/www/html/index.html
+  
+    - name: Setup nginx conf
+      template:
+        src=./template/nginx.conf.tpl
+        dest={{ nginx_path }}/nginx.conf
+      notify: restart nginx
+  handlers:
+    - name: restart nginx
+      service:
+        name=nginx
+        state=restarted

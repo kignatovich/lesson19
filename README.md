@@ -28,3 +28,8 @@
 </p>
 </details>
 
+
+## Список источников:
+
+01. [galaxy.ansible.com](https://galaxy.ansible.com/)
+02. [meritocracy.is](https://meritocracy.is/blog/2017/07/24/manage-nginx-configurations-ansible/)

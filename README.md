@@ -31,7 +31,7 @@ Enter passphrase for key '/home/front/.ssh/id_rsa':
 }
 (env) front@front:~/lesson19/lesson19$ 
 ```
-### запук playbook
+### запуск playbook
 ```shell
 ansible-playbook -i inventory.ini create_user_and_install.yaml -K
 ```

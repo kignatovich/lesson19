@@ -35,7 +35,7 @@ Enter passphrase for key '/home/front/.ssh/id_rsa':
 ```shell
 ansible-playbook -i inventory.ini create_user_and_install.yaml -K
 ```
-- Ключ "К" - из за того, что я использую не root юзера, а пользователя который требует повышения прав и ввода пароля.
+- Ключ "К" - из за того, что я использую не root юзера, а пользователя который требует повышения прав и ввода пароля. Так же можно ansible_sudo_pass = 1
 
 ### Вывод web-сервера NGINX:
 ![nginx](https://i.ibb.co/0tjmqd6/image.png)
